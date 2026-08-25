@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183b3a">
+  <title>Ledgerly | Personal finance tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <section id="auth-view" class="auth-shell">
+    <div class="auth-art"><span class="eyebrow">LEDGERLY</span><h1>Your money,<br><em>in focus.</em></h1><p>A calm, private place to understand every dollar you earn and spend.</p></div>
+    <div class="auth-panel">
+      <div class="brand-mark"><span>✦</span> Ledgerly</div>
+      <div id="auth-card" class="auth-card">
+        <p class="eyebrow">WELCOME BACK</p><h2 id="auth-title">Sign in</h2><p id="auth-copy" class="muted">Your personal financial picture is waiting.</p>
+        <form id="auth-form">
+          <label>Email<input id="auth-email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+          <label>Password<input id="auth-password" type="password" autocomplete="current-password" minlength="6" required placeholder="6+ characters"></label>
+          <button class="button primary full" type="submit" id="auth-submit">Sign in</button>
+        </form>
+        <div class="auth-links"><button class="text-button" id="auth-switch" type="button">Create an account</button><button class="text-button" id="forgot-password" type="button">Forgot password?</button></div>
+        <p id="auth-message" class="form-message" role="alert"></p>
+      </div>
+    </div>
+  </section>
+
+  <div id="app-view" class="app-shell hidden">
+    <aside class="sidebar"><div class="brand-mark"><span>✦</span> Ledgerly</div><p class="sidebar-label">YOUR MONEY</p><nav id="main-nav" aria-label="Main navigation"><button class="nav-item active" data-view="dashboard"><span>◌</span> Dashboard</button><button class="nav-item" data-view="income"><span>↗</span> Income</button><button class="nav-item" data-view="expenses"><span>−</span> Expenses</button><button class="nav-item" data-view="jobs"><span>▦</span> Jobs</button></nav><div class="sidebar-footer"><p id="user-email" class="muted"></p><button id="logout-button" class="text-button">Sign out</button></div></aside>
+    <main class="main-content"><header class="topbar"><div><p class="eyebrow" id="page-kicker">OVERVIEW</p><h1 id="page-title">Dashboard</h1></div><div class="month-control"><label for="month-select">Viewing</label><select id="month-select"></select></div></header>
+      <div id="dashboard-view" class="view"></div>
+      <div id="income-view" class="view hidden"></div>
+      <div id="expenses-view" class="view hidden"></div>
+      <div id="jobs-view" class="view hidden"></div>
+    </main>
+  </div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

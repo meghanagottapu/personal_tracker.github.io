@@ -1,0 +1,5 @@
+import { requireClient } from './supabase.js';
+export const CATEGORIES = ['Housing','Utilities','Groceries','Eating Out','Transportation','Gas','Car','Insurance','Phone','School','Health','Personal Care','Clothing','Entertainment','Subscriptions','Travel','Gifts','Other'];
+export async function listExpenses() { const { data, error } = await requireClient().from('expenses').select('*').order('expense_date', { ascending: false }).order('created_at', { ascending: false }); if (error) throw error; return data || []; }
+export async function saveExpense(entry, id = null) { const payload = { expense_date: entry.expense_date, category: entry.category, amount: Number(entry.amount), remarks: entry.remarks?.trim() || null }; const query = id ? requireClient().from('expenses').update(payload).eq('id', id) : requireClient().from('expenses').insert(payload); const { error } = await query; if (error) throw error; }
+export async function deleteExpense(id) { const { error } = await requireClient().from('expenses').delete().eq('id', id); if (error) throw error; }
